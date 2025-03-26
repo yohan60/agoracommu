@@ -48,7 +48,7 @@ const AdminPage = () => {
 
       setUsers(data);
     } catch (error) {
-      console.error(error);
+      console.warn('Erreur lors de la récupération des utilisateurs:', error); // Utilisation de console.warn
     }
   };
 
@@ -59,13 +59,13 @@ const AdminPage = () => {
       });
 
       if (response.ok) {
-        console.log(`Utilisateur ${userId} banni avec succès`);
+        console.info(`Utilisateur ${userId} banni avec succès`); // Utilisation de console.info
         fetchUsers(); // Recharger la liste des utilisateurs après avoir banni un utilisateur
       } else {
-        console.error('Erreur lors du bannissement de l&apos;utilisateur');
+        console.warn('Erreur lors du bannissement de l&apos;utilisateur'); // Utilisation de console.warn
       }
     } catch (error) {
-      console.error('Erreur réseau', error);
+      console.error('Erreur réseau:', error);
     }
   };
 

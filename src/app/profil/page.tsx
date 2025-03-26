@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import ProfilDetails from '@/components/ProfilPage/ProfilDetails';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth'; // Assure-toi que ce chemin est correct
@@ -6,7 +8,7 @@ import Link from 'next/link';
 
 // Fonction pour récupérer l'utilisateur depuis la base de données
 const getUser = async (id: number) => {
-  console.log('Recherche utilisateur avec ID :', id);
+  // console.log('Recherche utilisateur avec ID :', id); // Supprimé
 
   const user = await prisma.user.findUnique({
     where: { id_user: id },
@@ -18,7 +20,7 @@ const getUser = async (id: number) => {
     },
   });
 
-  console.log('Utilisateur trouvé :', user);
+  // console.log('Utilisateur trouvé :', user); // Supprimé
   return user;
 };
 
@@ -26,7 +28,7 @@ const getUser = async (id: number) => {
 const ProfilPage = async () => {
   // Récupérer la session de l'utilisateur connecté
   const session = await getServerSession(authOptions);
-  console.log('Session récupérée :', session);
+  // console.log('Session récupérée :', session); // Supprimé
 
   // Vérifier si l'utilisateur est connecté
   if (!session || !session.user) {

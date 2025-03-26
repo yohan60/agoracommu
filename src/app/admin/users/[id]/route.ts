@@ -1,14 +1,13 @@
-// app/api/admin/users/[id]/route.ts
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma'; // Assure-toi que tu as un client Prisma configuré
 
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+  const { id } = params; // Récupération de l'id depuis les paramètres de la route dynamique
 
   try {
-    // On bannit un utilisateur en mettant à jour son rôle à 'Banni'
+    // Mise à jour de l'utilisateur pour le bannir (changer son rôle à 'Banni')
     const user = await prisma.user.update({
-      where: { id_user: parseInt(id, 10) },
+      where: { id_user: parseInt(id, 10) }, // Utilisation de l'ID de l'utilisateur (converti en nombre)
       data: { roles: 'Banni' }, // Mettre à jour le rôle de l'utilisateur
     });
 

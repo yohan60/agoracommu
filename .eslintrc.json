@@ -3,7 +3,7 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "quotes": ["error", "single"],
-    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-console": ["off", { "allow": ["warn", "error", "log"] }],  // Permet également console.log
     "next/no-img-element": "off",
     "next/next-script-for-ga": "off"
   }
