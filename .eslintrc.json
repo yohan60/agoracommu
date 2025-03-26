@@ -2,8 +2,8 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react/no-unescaped-entities": "off",
-    "quotes": ["error", "single"],
-    "no-console": ["off", { "allow": ["warn", "error", "log"] }],  // Permet également console.log
+    "quotes": ["error", "double"],  // Permet les guillemets doubles
+    "no-console": ["off", { "allow": ["warn", "error", "log"] }],
     "next/no-img-element": "off",
     "next/next-script-for-ga": "off"
   }
