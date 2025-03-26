@@ -49,10 +49,10 @@ export default function HomePage() {
           de développement. Elle permet aux utilisateurs de partager leurs
           connaissances en publiant des articles sur diverses technologies, tout
           en offrant un espace pour interagir, poser des questions et répondre
-          aux demandes d'aide d'autres membres. Que vous soyez novice ou expert,
-          Agora Community est le lieu où les développeurs peuvent échanger
-          librement, s’entraider et approfondir leurs compétences à travers une
-          communauté active.
+          aux demandes d&apos;aide d&apos;autres membres. Que vous soyez novice
+          ou expert, Agora Community est le lieu où les développeurs peuvent
+          échanger librement, s&rsquo;entraider et approfondir leurs compétences
+          à travers une communauté active.
         </p>
 
         {/* Bouton pour accéder à la page des articles */}

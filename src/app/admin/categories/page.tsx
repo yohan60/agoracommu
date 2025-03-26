@@ -17,8 +17,8 @@ const CreateCategory = () => {
     } else {
       setIsAdmin(false);
       if (status === "authenticated") {
-        // Redirection si l'utilisateur n'est pas un Admin
-        router.push("/"); 
+        // Redirection si l'utilisateur n&apos;est pas un Admin
+        router.push("/");
       }
     }
   }, [session, status, router]);
@@ -55,7 +55,7 @@ const CreateCategory = () => {
   if (!isAdmin) {
     return (
       <div className="text-center text-red-500">
-        Vous n'êtes pas autorisé à accéder à cette page.
+        Vous n&apos;êtes pas autorisé à accéder à cette page.
       </div>
     );
   }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Définition de l'interface pour un article
 interface Article {
@@ -111,15 +112,17 @@ const ArticlesPage = () => {
 
                       {/* Gestion des images */}
                       {article.image_article ? (
-                        <img
+                        <Image
                           src={article.image_article}
                           alt={article.titre_article}
+                          width={300}
+                          height={150}
                           className="mt-3 md:mt-4 w-full h-[120px] md:h-[150px] object-cover rounded-md"
                         />
                       ) : (
                         <div className="mt-3 md:mt-4 w-full h-[120px] md:h-[150px] bg-gray-600 rounded-md flex items-center justify-center">
                           <p className="text-gray-500 text-xs md:text-sm">
-                            Pas d'image
+                            Pas d&apos;image
                           </p>
                         </div>
                       )}

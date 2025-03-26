@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 // Définition des props attendues par le composant ArticleContent
 interface ArticleContentProps {
@@ -23,13 +24,15 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
 
     {/* Affichage de l'image si disponible */}
     {image ? (
-      <img
+      <Image
         src={image}
         alt="Article Image"
+        width={800}
+        height={600}
         className="mt-4 w-full h-auto rounded-md shadow-md"
       />
     ) : (
-      <p className="mt-4 text-gray-400">Pas d'image disponible</p>
+      <p className="mt-4 text-gray-400">Pas d&apos;image disponible</p>
     )}
   </div>
 );

@@ -82,7 +82,7 @@ const EditProfile = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-base md:text-lg font-bold mb-2 text-white">
-              Nom d'utilisateur
+              Nom d&apos;utilisateur
             </label>
             <input
               type="text"

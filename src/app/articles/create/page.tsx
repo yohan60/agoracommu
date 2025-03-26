@@ -38,7 +38,7 @@ const CreateArticle = () => {
       setSelectedCategorie("");
       setImage("");
     } else {
-      alert("Erreur lors de la création de l'article.");
+      alert("Erreur lors de la création de l&apos;article.");
     }
   };
 
@@ -75,7 +75,7 @@ const CreateArticle = () => {
                   htmlFor="titre"
                   className="block text-sm text-white mb-2"
                 >
-                  Nom de l'article
+                  Nom de l&apos;article
                 </label>
                 <input
                   id="titre"
@@ -119,7 +119,7 @@ const CreateArticle = () => {
                 htmlFor="description"
                 className="block text-sm text-white mb-2"
               >
-                Description de l'article
+                Description de l&apos;article
               </label>
               <textarea
                 id="description"
@@ -149,7 +149,7 @@ const CreateArticle = () => {
               type="submit"
               className="w-[40%] md:w-[20%] px-3 py-2 md:px-4 rounded-md text-white border border-white hover:text-gray-800 hover:bg-white hover:border-gray-800 hover:font-bold mt-6 md:mt-8 mx-auto block text-center text-[12px] md:text-[14px]"
             >
-              Publier l'article
+              Publier l&apos;article
             </button>
           </form>
         </div>
