@@ -2,7 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react/no-unescaped-entities": "off",
-    "quotes": ["error", "double"],  // Permet les guillemets doubles
+    "quotes": ["error", "double", "single"],  // Permet les guillemets doubles
     "no-console": ["off", { "allow": ["warn", "error", "log"] }],
     "next/no-img-element": "off",
     "next/next-script-for-ga": "off"
