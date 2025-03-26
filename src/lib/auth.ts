@@ -51,7 +51,7 @@ export const authOptions: NextAuthOptions = {
           id: String(existingUser.id_user), // `id_user` converti en string
           username: existingUser.username,
           email: existingUser.email,
-          roles: existingUser.roles, // Assure-toi que `roles` existe dans ta table User
+          roles: existingUser.roles || 'user', // Assure-toi que `roles` existe dans ta table User et fournir une valeur par défaut
         };
       },
     }),

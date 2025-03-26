@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma'; // Assure-toi que tu as un client Prisma configuré
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
-  const { id } = params; // Récupération de l'id depuis les paramètres de la route dynamique
+export async function DELETE(request: Request, { params }: {params: Promise<{ id: string }> }) {
+  const { id } = await params; // Récupération de l'id depuis les paramètres de la route dynamique
 
   try {
     // Mise à jour de l'utilisateur pour le bannir (changer son rôle à 'Banni')

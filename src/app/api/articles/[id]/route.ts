@@ -3,10 +3,10 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   // Attente des params.id
-  const { id } = params; // Aucune modification nécessaire ici, car `params` est déjà résolu dans la fonction GET.
+  const { id } = await params; // Aucune modification nécessaire ici, car `params` est déjà résolu dans la fonction GET.
 
   const articleId = parseInt(id, 10);
 

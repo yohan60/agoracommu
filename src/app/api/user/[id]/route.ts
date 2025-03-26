@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'; // Utilisation de NextResponse pour gérer les réponses API
 import { db } from '@/lib/db'; // Importation de la base de données configurée
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   // Récupérer l'ID depuis les paramètres de l'URL
-  const id = parseInt(params.id, 10); // Conversion de l'ID en entier
+  const id = parseInt((await params).id, 10); // Conversion de l'ID en entier
 
   // Vérification si l'ID est un nombre valide
   if (isNaN(id)) {

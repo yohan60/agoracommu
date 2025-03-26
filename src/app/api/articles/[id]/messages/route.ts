@@ -4,10 +4,10 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth'; // Exemple : où tu définis tes options next-auth
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } =await params;
   const articleId = parseInt(id, 10);
 
   if (isNaN(articleId)) {
@@ -46,9 +46,9 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await params;
   const articleId = parseInt(id, 10);
   const { message } = await req.json(); // Récupération du message
 
