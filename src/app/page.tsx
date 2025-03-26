@@ -35,7 +35,7 @@ export default function HomePage() {
         {/* Image de fond avec opacité */}
         <div
           className='absolute inset-0 w-full h-full bg-cover bg-center opacity-50'
-          style={{ backgroundImage: "url('/AC.png')" }} // Utilise des guillemets doubles ici
+          style={{ backgroundImage: 'url("/AC.png")' }} // Utilise des guillemets doubles ici
         ></div>
 
         {/* Contenu centré */}
