@@ -1,7 +1,7 @@
-"use client";
-import { signOut } from "next-auth/react";
-import Image from "next/image";
-import { Button } from "./ui/button";
+'use client';
+import { signOut } from 'next-auth/react';
+import Image from 'next/image';
+import { Button } from './ui/button';
 
 const UserAccountNav = () => {
   return (
@@ -12,10 +12,10 @@ const UserAccountNav = () => {
           callbackUrl: `${window.location.origin}/sign-in`,
         })
       }
-      variant="ghost"
-      title="Se déconnecter"
+      variant='ghost'
+      title='Se déconnecter'
     >
-      <Image src="/deco.png" alt="Se déconnecter" width={26} height={26} />
+      <Image src='/deco.png' alt='Se déconnecter' width={26} height={26} />
     </Button>
   );
 };

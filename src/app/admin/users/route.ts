@@ -1,6 +1,6 @@
 // app/api/admin/users/route.ts
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma"; // Assure-toi que tu as un client Prisma configuré
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma'; // Assure-toi que tu as un client Prisma configuré
 
 export async function GET() {
   try {
@@ -16,7 +16,7 @@ export async function GET() {
 
     return NextResponse.json(users); // Retourner les utilisateurs
   } catch (error) {
-    console.error("Erreur lors de la récupération des utilisateurs", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    console.error('Erreur lors de la récupération des utilisateurs', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
   }
 }

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import {
   Form,
   FormControl,
@@ -8,30 +8,30 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+} from '../ui/form';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const FormSchema = z
   .object({
-    username: z.string().min(1, "Nom d'utilisateur requis").max(100),
-    email: z.string().min(1, "Email est requis").email("Email invalide"),
+    username: z.string().min(1, 'Nom d&apos;utilisateur requis').max(100),
+    email: z.string().min(1, 'Email est requis').email('Email invalide'),
     password: z
       .string()
-      .min(1, "Mot de passe requis")
-      .min(8, "Le mot de passe doit avoir 8 caractères minimum"),
+      .min(1, 'Mot de passe requis')
+      .min(8, 'Le mot de passe doit avoir 8 caractères minimum'),
     confirmPassword: z
       .string()
-      .min(1, "Confirmation de mot de passe est requise"),
+      .min(1, 'Confirmation de mot de passe est requise'),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Les mots de passe doit être identique",
+    path: ['confirmPassword'],
+    message: 'Les mots de passe doit être identique',
   });
 
 const SignUpForm = () => {
@@ -39,18 +39,18 @@ const SignUpForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    const response = await fetch("/api/user", {
-      method: "POST",
+    const response = await fetch('/api/user', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: values.username,
@@ -60,26 +60,26 @@ const SignUpForm = () => {
     });
 
     if (response.ok) {
-      router.push("/sign-in");
+      router.push('/sign-in');
     } else {
-      toast.success("Connexion réussie !"); // Affiche un message de succès
+      toast.success('Connexion réussie !'); // Affiche un message de succès
       router.refresh();
-      router.push("/dashboard/admin");
+      router.push('/dashboard/admin');
     }
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-        <div className="space-y-2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+        <div className='space-y-2'>
           <FormField
             control={form.control}
-            name="username"
+            name='username'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe" {...field} />
+                  <Input placeholder='johndoe' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,12 +87,12 @@ const SignUpForm = () => {
           />
           <FormField
             control={form.control}
-            name="email"
+            name='email'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="mail@example.com" {...field} />
+                  <Input placeholder='mail@example.com' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -100,14 +100,14 @@ const SignUpForm = () => {
           />
           <FormField
             control={form.control}
-            name="password"
+            name='password'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Mot de passe</FormLabel>
                 <FormControl>
                   <Input
-                    type="password"
-                    placeholder="8 caractères minimum"
+                    type='password'
+                    placeholder='8 caractères minimum'
                     {...field}
                   />
                 </FormControl>
@@ -117,14 +117,14 @@ const SignUpForm = () => {
           />
           <FormField
             control={form.control}
-            name="confirmPassword"
+            name='confirmPassword'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirmer mot de passe</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="8 caractères minimum"
-                    type="password"
+                    placeholder='8 caractères minimum'
+                    type='password'
                     {...field}
                   />
                 </FormControl>
@@ -133,13 +133,13 @@ const SignUpForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6" type="submit">
+        <Button className='w-full mt-6' type='submit'>
           S'inscrire
         </Button>
       </form>
-      <p className="text-center text-sm text-gray-600 mt-2">
+      <p className='text-center text-sm text-gray-600 mt-2'>
         Vous possédez déjà un compte ? &nbsp;
-        <Link className="text-blue-500 hover:underline" href="/sign-in">
+        <Link className='text-blue-500 hover:underline' href='/sign-in'>
           Connectez-vous
         </Link>
       </p>

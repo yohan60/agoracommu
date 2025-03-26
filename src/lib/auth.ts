@@ -1,18 +1,18 @@
-import { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { db } from "./db";
-import { compare } from "bcryptjs";
+import { NextAuthOptions } from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { db } from './db';
+import { compare } from 'bcryptjs';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: "jwt", // Utilisation du JWT pour la gestion de session
+    strategy: 'jwt', // Utilisation du JWT pour la gestion de session
   },
   pages: {
-    signIn: "/sign-in", // Redirection vers la page de connexion personnalisée
+    signIn: '/sign-in', // Redirection vers la page de connexion personnalisée
   },
   providers: [
     GoogleProvider({
@@ -20,14 +20,14 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "john@mail.com" },
-        password: { label: "Mot de passe", type: "password" },
+        email: { label: 'Email', type: 'email', placeholder: 'john@mail.com' },
+        password: { label: 'Mot de passe', type: 'password' },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Email et mot de passe requis");
+          throw new Error('Email et mot de passe requis');
         }
 
         const existingUser = await db.user.findUnique({
@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (!existingUser) {
-          throw new Error("Utilisateur non trouvé");
+          throw new Error('Utilisateur non trouvé');
         }
 
         const passwordMatch = await compare(
@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
           existingUser.password
         );
         if (!passwordMatch) {
-          throw new Error("Mot de passe incorrect");
+          throw new Error('Mot de passe incorrect');
         }
 
         // Retourne l'utilisateur avec l'id et les rôles
@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         // Ajout de l'id et des informations utilisateur dans le JWT
         token.id = user.id;
-        token.roles = user.roles || "user"; // Valeur par défaut "user" si aucun rôle n'est défini
+        token.roles = user.roles || 'user'; // Valeur par défaut 'user' si aucun rôle n'est défini
         token.username = user.username;
       }
       return token;

@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 export async function GET(
   req: NextRequest,
@@ -11,7 +11,7 @@ export async function GET(
   const articleId = parseInt(id, 10);
 
   if (isNaN(articleId)) {
-    return NextResponse.json({ error: "ID invalide" }, { status: 400 });
+    return NextResponse.json({ error: 'ID invalide' }, { status: 400 });
   }
 
   try {
@@ -30,14 +30,14 @@ export async function GET(
 
     if (!article) {
       return NextResponse.json(
-        { error: "Article non trouvé" },
+        { error: 'Article non trouvé' },
         { status: 404 }
       );
     }
 
     return NextResponse.json(article); // Renvoyer l'article avec ses messages et utilisateurs
   } catch (error) {
-    console.error("Erreur lors de la récupération de l'article : ", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    console.error('Erreur lors de la récupération de l&apos;article : ', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
   }
 }

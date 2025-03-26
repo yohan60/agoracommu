@@ -1,17 +1,17 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 // Suppression d'un article
 export async function DELETE(req: Request) {
   try {
     // Extraire l'ID de l'URL
     const { pathname } = new URL(req.url);
-    const id = pathname.split("/").pop();
+    const id = pathname.split('/').pop();
 
     if (!id) {
-      console.error("ID non fourni");
+      console.error('ID non fourni');
       return NextResponse.json(
-        { error: "ID d'article non fourni" },
+        { error: 'ID d&apos;article non fourni' },
         { status: 400 }
       );
     }
@@ -19,9 +19,9 @@ export async function DELETE(req: Request) {
     const articleId = parseInt(id);
 
     if (isNaN(articleId)) {
-      console.error("ID invalide:", id);
+      console.error('ID invalide:', id);
       return NextResponse.json(
-        { error: "ID d'article invalide" },
+        { error: 'ID d&apos;article invalide' },
         { status: 400 }
       );
     }
@@ -35,10 +35,10 @@ export async function DELETE(req: Request) {
 
     return NextResponse.json(deletedArticle);
   } catch (error) {
-    console.error("Erreur lors de la suppression de l'article:", error);
+    console.error('Erreur lors de la suppression de l&apos;article:', error);
     return NextResponse.json(
       {
-        error: "Erreur interne du serveur lors de la suppression de l'article",
+        error: 'Erreur interne du serveur lors de la suppression de l&apos;article',
       },
       { status: 500 }
     );

@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { prisma } from "@/lib/prisma";
-import { authOptions } from "@/lib/auth";
+import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { prisma } from '@/lib/prisma';
+import { authOptions } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     // Vérifier si l'utilisateur est authentifié
     if (!session?.user?.id) {
       return NextResponse.json(
-        { error: "Utilisateur non authentifié" },
+        { error: 'Utilisateur non authentifié' },
         { status: 401 }
       );
     }
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     // Vérifier si la conversion a échoué (cas où l'ID utilisateur n'est pas valide)
     if (isNaN(userId)) {
       return NextResponse.json(
-        { error: "ID utilisateur invalide" },
+        { error: 'ID utilisateur invalide' },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     // Limiter la longueur de la description à 500 caractères
     const truncatedDescription =
       description_article.length > 500
-        ? description_article.slice(0, 500) + "..."
+        ? description_article.slice(0, 500) + '...'
         : description_article;
 
     // Créer un nouvel article en utilisant l'ID de l'utilisateur depuis la session
@@ -51,9 +51,9 @@ export async function POST(request: Request) {
     // Retourner la réponse avec le nouvel article créé
     return NextResponse.json(newArticle, { status: 201 });
   } catch (error) {
-    console.error("Erreur lors de la création de l'article :", error);
+    console.error('Erreur lors de la création de l&apos;article :', error);
     return NextResponse.json(
-      { error: "Erreur interne du serveur" },
+      { error: 'Erreur interne du serveur' },
       { status: 500 }
     );
   }
@@ -71,10 +71,10 @@ export async function GET() {
     // Retourner les articles sous forme de réponse JSON
     return new Response(JSON.stringify(articles), { status: 200 });
   } catch (error) {
-    console.error("Erreur lors de la récupération des articles", error);
+    console.error('Erreur lors de la récupération des articles', error);
     return new Response(
       JSON.stringify({
-        message: "Erreur lors de la récupération des articles",
+        message: 'Erreur lors de la récupération des articles',
       }),
       { status: 500 }
     );

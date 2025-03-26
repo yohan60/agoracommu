@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 // Récupération des articles (GET)
 export async function GET() {
@@ -10,7 +10,7 @@ export async function GET() {
         categorie: true,
       },
       orderBy: {
-        created_at: "desc",
+        created_at: 'desc',
       },
     });
 
